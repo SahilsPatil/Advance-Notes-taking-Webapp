@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Notes</title>
+    <link rel="shortcut icon" href="logo3.png" type="image/icon">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0%;
+            /* overflow: hidden; */
+        }
+
+        header1 {
+            width: 100vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(45deg, rgb(0, 64, 44), rgb(0, 99, 68), rgb(1, 59, 41));
+            color: rgb(235, 219, 0);
+            font-weight: bold;
+            font-family: "Copperplate Gothic";
+        }
+
+        .left {
+            padding-left: 20px;
+            cursor: pointer;
+        }
+
+        .middle ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .middle li {
+            padding: 0px 20px;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+        }
+
+        .right {
+            display: flex;
+            /* width: 210px; */
+        }
+
+        .searchbar {
+            margin-right: 20px;
+            border: 1px solid rgb(235, 219, 0);
+            border-radius: 5px;
+            width: 120px;
+        }
+
+        .menubtn svg {
+            fill: rgb(235, 219, 0);
+            cursor: pointer;
+            margin-right: 20px;
+            display: none;
+        }
+
+        #search {
+            padding: 7px 5px;
+            width: 100%;
+            outline: none;
+            border: none;
+            font-family: "High Tower Text";
+            font-size: 16px;
+            background-color: transparent;
+            color: rgb(235, 219, 0);
+            /* border-right: 1px solid rgb(235, 219, 0); */
+            caret-color: rgb(235, 219, 0);
+        }
+
+        #search::-webkit-search-cancel-button {
+            -webkit-appearance: none;
+        }
+
+        #search_btn {
+            padding: 7px 5px;
+            width: 30%;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            color: rgb(235, 219, 0);
+            font-weight: bold;
+            font-family: "Copperplate Gothic";
+            cursor: pointer;
+        }
+
+        .section_one {
+            width: 90%;
+            margin: auto;
+            margin-top: 30px;
+            /* display: none; */
+        }
+
+        .title {
+            font-size: 35px;
+            font-weight: bold;
+            font-family: "Copperplate Gothic";
+            text-decoration: underline solid rgb(235, 219, 0);
+            text-underline-offset: 4px;
+            color: rgb(32, 84, 2);
+            margin-top: 0px;
+        }
+
+        form {
+            margin-top: 20vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form input,
+        textarea {
+            width: 80%;
+            padding: 5px 10px;
+            font-size: 17px;
+            font-weight: bold;
+            font-family: "High Tower Text";
+            outline: none;
+            border: none;
+            border-bottom: 2px solid rgb(235, 219, 0);
+            color: rgb(0, 64, 44);
+            border-radius: 50px;
+            margin: 15px 0px;
+        }
+
+        #subject {
+            /* margin-top: 10vh; */
+        }
+
+        #next {
+            padding: 10px;
+            width: 120px;
+            border: none;
+            border-bottom-right-radius: 0px;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: "Copperplate Gothic";
+            color: rgb(235, 219, 0);
+            background: linear-gradient(45deg, rgb(0, 64, 44), rgb(0, 99, 68), rgb(1, 59, 41));
+            cursor: pointer;
+            margin-bottom: 80px;
+            /* display: none; */
+
+        }
+
+        #note {
+            border-radius: 5px;
+            border: 2px solid rgb(235, 219, 0);
+
+            display: none;
+        }
+
+        #submit {
+            padding: 10px;
+            width: 120px;
+            border: none;
+            border-bottom-right-radius: 0px;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: "Copperplate Gothic";
+            color: rgb(235, 219, 0);
+            background: linear-gradient(45deg, rgb(0, 64, 44), rgb(0, 99, 68), rgb(1, 59, 41));
+            cursor: pointer;
+            display: none;
+            margin-bottom: 80px;
+        }
+
+        footer {
+            position: fixed;
+            /* display: flex; */
+            /* justify-content: stretch; */
+            /* align-items: center; */
+            width: 100%;
+            height: 60px;
+            bottom: 0;
+            background: linear-gradient(45deg, rgb(0, 64, 44), rgb(0, 99, 68), rgb(1, 59, 41));
+            color: rgb(235, 219, 0);
+            font-size: 18px;
+            letter-spacing: 1px;
+            font-weight: bold;
+            font-family: "Copperplate Gothic";
+        }
+
+        .footerbtn {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .footerbtn button {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            margin-top: 15px;
+        }
+
+        .footerbtn svg {
+            fill: rgb(235, 219, 0);
+            cursor: pointer;
+        }
+
+        p {
+            color: red;
+            text-align: left;
+            text-decoration: underline;
+            font-weight: bold;
+            font-family: "High Tower Text";
+            display: none;
+        }
+
+        .section_two,
+        .section_four,
+        .section_five {
+            width: 90%;
+            margin: auto;
+            margin-top: 30px;
+            margin-bottom: 80px;
+            display: none;
+        }
+
+        .notes {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .fav {
+            color: rgb(0, 64, 44);
+            font-size: 28px;
+            cursor: pointer;
+            margin-left: 220px;
+            /* display: none; */
+        }
+
+        .note {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 250px;
+            padding: 20px 10px;
+            padding-top: 0px;
+            box-shadow: 2px 2px 10px gray;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        .note_title {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            font-family: "High Tower Text";
+            margin: 0px 0px;
+            margin-bottom: 20px;
+            color: rgb(32, 84, 2);
+        }
+
+        .note_desc {
+            font-size: 16px;
+            font-family: "High Tower Text";
+            text-align: center;
+            margin-bottom: 25px;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .drbtn {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+        }
+
+        #deletebtn,
+        #readbtn,
+        #prevbtn,
+        #nextbtn {
+            padding: 10px;
+            width: 80px;
+            border: none;
+            border-radius: 100px;
+            border-bottom-right-radius: 0px;
+            font-size: 14px;
+            font-weight: bold;
+            font-family: "Copperplate Gothic";
+            color: rgb(235, 219, 0);
+            background: linear-gradient(45deg, rgb(0, 64, 44), rgb(0, 99, 68), rgb(1, 59, 41));
+            cursor: pointer;
+        }
+
+
+
+        .section_three {
+            width: 90%;
+            margin: auto;
+            margin-top: 30px;
+            margin-bottom: 80px;
+            display: none;
+        }
+
+        .notes_s3 {
+            margin-top: 90px;
+        }
+
+        .note_s3 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-width: 900px;
+            padding: 20px 10px;
+            box-shadow: 2px 2px 10px gray;
+            border-radius: 10px;
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        .note_title_s3 {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            font-family: "High Tower Text";
+            margin: 5px 0px;
+            margin-bottom: 20px;
+            color: rgb(32, 84, 2);
+        }
+
+        .note_desc_s3 {
+            font-size: 16px;
+            font-family: "High Tower Text";
+            text-align: left;
+            margin-bottom: 25px;
+            padding: 0px 20px;
+        }
+
+        .dpntn_s3 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 90%;
+        }
+
+        #notfound {
+            margin-top: 30px;
+            font-size: 28px;
+            font-weight: bold;
+            font-family: "Copperplate Gothic";
+            color: rgb(235, 219, 0);
+            -webkit-text-stroke: 0.5px rgb(34, 255, 0);
+        }
+
+
+
+
+
+
+
+        @media screen and (min-width: 651px) {
+            .left {
+                display: block !important;
+                opacity: 1;
+                width: auto;
+            }
+        }
+
+        @media screen and (max-width: 650px) {
+            .header1 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .left {}
+
+            .right {
+                /* display: none; */
+            }
+
+            .middle {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                display: none;
+            }
+
+            .middle ul {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                /* display: none; */
+                margin-top: 50px;
+
+            }
+
+            .middle li {
+                margin: 7px 0px;
+            }
+
+            .right {
+                width: auto;
+                align-items: center;
+            }
+
+            .searchbar {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                width: 120px;
+
+            }
+
+            #search {
+                width: 100px;
+            }
+
+            #search_btn {
+                width: 50px;
+            }
+
+            .menubtn svg {
+                display: block;
+            }
+        }
+
+        @media screen and (min-width: 321px) {
+            .left {
+                display: block !important;
+            }
+        }
+
+        @media screen and (max-width: 320px) {
+            .left {
+                display: none !important;
+            }
+
+            .right {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media screen and (max-height: 590px) {
+            form {
+                margin-top: 10vh;
+            }
+
+            #subject {
+                margin-top: 10vh;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <header1>
+        <div class="left" id="left">TNots</div>
+        <div class="middle" id="middle">
+            <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Contact</li>
+            </ul>
+        </div>
+        <div class="right">
+            <div class="searchbar" id="searchbar">
+                <input type="search" name="search" id="search" placeholder="Search Notes">
+                <!-- <button id="search_btn">Search</button> -->
+            </div>
+            <div class="menubtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" id="menubtn" fill="currentColor"
+                    class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                </svg>
+            </div>
+        </div>
+
+    </header1>
+
+    <div class="section_one" id="section_one">
+        <div class="title">
+            Take a Note
+        </div>
+        <form action="" id="form">
+            <input type="text" id="subject" maxlength="50" minlength="1" placeholder="Enter The Subject" required>
+            <p id="error1">Please Enter The Subject !! </p>
+            <textarea name="note" id="note" cols="60" rows="10" placeholder="Type Note..." maxlength="4000"
+                required></textarea>
+            <input type="button" value="Next" id="next">
+            <input type="submit" value="Submit" id="submit" name="submit">
+        </form>
+    </div>
+
+    <div class="section_two" id="section_two">
+        <div class="title">
+            All Notes
+        </div>
+        <div class="notes" id="notes">
+            <div class="note">
+                <div class="fav" id="fav">
+                    &star;
+                </div>
+                <div class="note_title">
+                    How to Do
+                </div>
+                <div class="note_desc">
+                    Lorem na lorem40
+                </div>
+                <div class="drbtn">
+                    <button id="deletebtn" onclick="deletenote(${index})">Delete</button>
+                    <button id="readbtn" onclick="readnote(${index})">Read</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section_three" id="section_three">
+        <div class="title">
+            Read Notes
+        </div>
+        <div class="note_s3" id="note_s3">
+
+        </div>
+    </div>
+
+    <div class="section_four" id="section_four">
+        <div class="title">
+            Fav Notes
+        </div>
+        <div class="notes" id="notes_s4">
+            <div class="note">
+                <div class="fav" id="fav">
+                    &star;
+                </div>
+                <div class="note_title">
+                    <!-- How to Do -->
+                </div>
+                <div class="note_desc">
+                    <!-- Lorem na lorem40 -->
+                </div>
+                <div class="drbtn">
+                    <button id="deletebtn" onclick="deletenote(${index})">Delete</button>
+                    <button id="readbtn" onclick="readnote(${index})">Read</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section_five" id="section_five">
+        <div class="title">
+            Search Notes
+        </div>
+        <div class="notes" id="notes_s5">
+            <div class="note">
+                <div class="fav" id="fav">
+                    &star;
+                </div>
+                <div class="note_title">
+                    <!-- How to Do -->
+                </div>
+                <div class="note_desc">
+                    <!-- Lorem na lorem40 -->
+                </div>
+                <div class="drbtn">
+                    <button id="deletebtn" onclick="deletenote(${index})">Delete</button>
+                    <button id="readbtn" onclick="readnote(${index})">Read</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer>
+        <div class="footerbtn">
+            <button id="addbtn"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+                    class="bi bi-file-earmark-plus-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM8.5 7v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 1 0z" />
+                </svg>
+            </button>
+            <button id="allbtn"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+                    class="bi bi-journal" viewBox="0 0 16 16">
+                    <path
+                        d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                    <path
+                        d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                </svg>
+            </button>
+            <Button id="starbtn"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+                    class="bi bi-bookmark-star-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.178.178 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.178.178 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.178.178 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.178.178 0 0 1-.134-.098L8.16 4.1z" />
+                </svg>
+            </Button>
+        </div>
+    </footer>
+</body>
+<script>
+// let next = document.getElementById("next")
+// let subject = document.getElementById("subject")
+// let note = document.getElementById("note")
+// let submit = document.getElementById("submit")
+// let form = document.getElementById("form")
+// let error1 = document.getElementById("error1")
+// let section_two = document.getElementById("section_two")
+// let section_one = document.getElementById("section_one")
+// let section_three = document.getElementById("section_three")
+// let section_four = document.getElementById("section_four")
+// let notes = document.getElementById("notes")
+// let note_s3 = document.getElementById("note_s3")
+// let nextbtn = document.getElementById("nextbtn")
+// let addbtn = document.getElementById("addbtn")
+// let allbtn = document.getElementById("allbtn")
+// let starbtn = document.getElementById("starbtn")
+// let menubtn = document.getElementById("menubtn")
+// let left = document.getElementById("left")
+
+let isopen = false;
+
+
+next.addEventListener("click", () => {
+    if (subject.value == "") {
+        error1.style.display = "block"
+        subject.style.borderBottom = "2px solid red"
+    }
+    else {
+        next.style.display = "none";
+        subject.style.display = "none";
+        note.style.display = "block";
+        submit.style.display = "block";
+        error1.style.display = "none"
+    }
+
+
+})
+
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let notesdata = [];
+    let allnotes = localStorage.getItem("allnotes");
+    if (allnotes == null) {
+        // let notesdata = [];
+    }
+    else {
+        notesdata = JSON.parse(allnotes);
+    }
+
+    notesdata.push({
+        title: subject.value,
+        desc: note.value,
+        star: false
+    });
+    localStorage.setItem("allnotes", JSON.stringify(notesdata))
+
+    subject.value = "";
+    note.value = "";
+
+    section_one.style.display = "none"
+    section_two.style.display = "block"
+    section_three.style.display = "none"
+    section_four.style.display = "none"
+    section_five.style.display = "none"
+
+
+    display();
+})
+function display() {
+    let notesdata = [];
+    let allnotes = localStorage.getItem("allnotes");
+    if (allnotes == null) {
+        let notesdata = [];
+    }
+    else {
+        notesdata = JSON.parse(allnotes);
+    }
+    if (notesdata.length == 0) {
+        notes.innerHTML = `<div id="notfound">Not Found !</div>`
+
+    }
+    else {
+        notes.innerHTML = ``
+        notesdata.forEach(function (notesdata, index) {
+            if (notesdata.star) {
+                notes.innerHTML += `<div class="note">
+            <div class="fav" id="fav" onclick="favnote(${index})">
+                    &starf;
+            </div>
+            <div class="note_title">
+                ${notesdata.title}
+            </div>
+            <div class="note_desc">
+                ${notesdata.desc}
+            </div>
+            <div class="drbtn">
+                <button id="deletebtn" onclick="deletenote(${index})">Delete</button>
+                <button id="readbtn" onclick="readnote(${index})">Read</button>
+            </div>
+        </div>`
+            } else {
+                notes.innerHTML += `<div class="note">
+                <div class="fav" id="fav" onclick="favnote(${index})">
+                &star;
+            </div>
+            <div class="note_title">
+                ${notesdata.title}
+            </div>
+            <div class="note_desc">
+                ${notesdata.desc}
+            </div>
+            <div class="drbtn">
+                <button id="deletebtn" onclick="deletenote(${index})">Delete</button>
+                <button id="readbtn" onclick="readnote(${index})">Read</button>
+            </div>
+        </div>`
+            }
+
+        });
+    }
+    section_one.style.display = "none"
+    section_two.style.display = "block"
+    section_three.style.display = "none"
+    section_four.style.display = "none"
+    section_five.style.display = "none"
+
+}
+
+function deletenote(index) {
+    let notesdata = [];
+    let allnotes = localStorage.getItem("allnotes");
+    if (allnotes == null) {
+        let notesdata = [];
+    }
+    else {
+        notesdata = JSON.parse(allnotes);
+    }
+    notesdata.splice(index, 1);
+    localStorage.setItem("allnotes", JSON.stringify(notesdata))
+    display();
+}
+
+function readnote(index) {
+    let notesdata = [];
+    let allnotes = localStorage.getItem("allnotes");
+    if (allnotes == null) {
+        let notesdata = [];
+    }
+    else {
+        notesdata = JSON.parse(allnotes);
+    }
+
+    section_one.style.display = "none"
+    section_two.style.display = "none"
+    section_three.style.display = "block"
+    section_four.style.display = "none"
+    section_five.style.display = "none"
+
+
+    note_s3.innerHTML = `<div class="note_title_s3">
+                            ${notesdata[index].title}
+                        </div>
+                        <div class="note_desc_s3">  
+                            ${notesdata[index].desc}
+                        </div>
+                        <div class="dpntn_s3">
+                            <button id="prevbtn" onclick="prevnote(${index - 1})">Prev</button>
+                            <button id="deletebtn" onclick="deletenote(${index})">Delete</button>
+                            <button id="nextbtn" onclick="nextnote(${index + 1})">Next</button>
+                        </div>`
+}
+
+function nextnote(index) {
+    let notesdata = [];
+    let allnotes = localStorage.getItem("allnotes");
+    if (allnotes == null) {
+        let notesdata = [];
+    }
+    else {
+        notesdata = JSON.parse(allnotes);
+    }
+    if (notesdata.length == index) {
+        nextbtn.style.cursor = "unset"
+        nextbtn.style.opacity = "0.5"
+    }
+    else {
+        note_s3.innerHTML = `<div class="note_title_s3">
+                               ${notesdata[index].title}
+                           </div>
+                           <div class="note_desc_s3">  
+                               ${notesdata[index].desc}
+                           </div>
+                           <div class="dpntn_s3">
+                               <button id="prevbtn" onclick="prevnote(${index - 1})">Prev</button>
+                               <button id="deletebtn" onclick="deletenote(${index})">Delete</button>
+                               <button id="nextbtn" onclick="nextnote(${index + 1})">Next</button>
+                           </div>`
+
+    }
+
+}
+
+function prevnote(index) {
+    let notesdata = [];
+    let allnotes = localStorage.getItem("allnotes");
+    if (allnotes == null) {
+        let notesdata = [];
+    }
+    else {
+        notesdata = JSON.parse(allnotes);
+    }
+    if (index == -1) {
+        prevbtn.style.cursor = "unset"
+        prevbtn.style.opacity = "0.5"
+    }
+    else {
+        note_s3.innerHTML = `<div class="note_title_s3">
+                               ${notesdata[index].title}
+                           </div>
+                           <div class="note_desc_s3">  
+                               ${notesdata[index].desc}
+                           </div>
+                           <div class="dpntn_s3">
+                               <button id="prevbtn" onclick="prevnote(${index - 1})">Prev</button>
+                               <button id="deletebtn" onclick="deletenote(${index})">Delete</button>
+                               <button id="nextbtn" onclick="nextnote(${index + 1})">Next</button>
+                           </div>`
+
+    }
+}
+
+addbtn.addEventListener("click", () => {
+    section_one.style.display = "block"
+    section_two.style.display = "none"
+    section_three.style.display = "none"
+    section_four.style.display = "none"
+    section_five.style.display = "none"
+
+    next.style.display = "block";
+    subject.style.display = "block";
+    subject.style.borderBottom = "2px solid rgb(235, 219, 0)";
+    note.style.display = "none";
+    submit.style.display = "none";
+    error1.style.display = "none";
+})
+allbtn.addEventListener("click", () => {
+    section_one.style.display = "none"
+    section_two.style.display = "block"
+    section_three.style.display = "none"
+    section_four.style.display = "none"
+    section_five.style.display = "none"
+
+
+    next.style.display = "none";
+    subject.style.display = "none";
+    subject.style.borderBottom = "2px solid rgb(235, 219, 0)";
+    note.style.display = "none";
+    submit.style.display = "none";
+    error1.style.display = "none";
+
+    display();
+})
+
+menubtn.addEventListener("click", () => {
+    if (isopen) {
+        menubtn.style.transform = "rotate(180deg)";
+        if (innerWidth > 320) {
+            left.style.display = "block";
+            left.style.width = "auto";
+            left.style.opacity = "1";
+        }
+        else {
+            left.style.display = "none";
+        }
+        middle.style.display = "none";
+        searchbar.style.display = "block";
+        isopen = false;
+    }
+    else {
+        menubtn.style.transform = "rotate(90deg)";
+        if (innerWidth > 320) {
+            left.style.display = "none";
+            left.style.width = "0px";
+            left.style.opacity = "-1";
+        }
+        searchbar.style.display = "none";
+        middle.style.display = "flex";
+        middle.style.transition = "5s";
+        isopen = true;
+
+    }
+})
+
+starbtn.addEventListener("click", () => {
+    let notesdata = [];
+    let allnotes = localStorage.getItem("allnotes");
+    if (allnotes == null) {
+        let notesdata = [];
+    }
+    else {
+        notesdata = JSON.parse(allnotes);
+    }
+    if (notesdata.length == 0) {
+        notes_s4.innerHTML = `<div id="notfound">Not Found !</div>`
+    }
+    else {
+        notes_s4.innerHTML = ``
+        notesdata.forEach(function (notesdata, index) {
+            if (notesdata.star) {
+                notes_s4.innerHTML += `<div class="note">
+            <div class="fav" id="fav" onclick="favnote(${index})">
+                    &starf;
+            </div>
+            <div class="note_title">
+                ${notesdata.title}
+            </div>
+            <div class="note_desc">
+                ${notesdata.desc}
+            </div>
+            <div class="drbtn">
+                <button id="deletebtn" onclick="deletenote(${index})">Delete</button>
+                <button id="readbtn" onclick="readnote(${index})">Read</button>
+            </div>
+        </div>`
+            }
+        })
+    }
+    section_one.style.display = "none"
+    section_two.style.display = "none"
+    section_three.style.display = "none"
+    section_four.style.display = "block"
+    section_five.style.display = "none"
+
+
+})
+
+function favnote(index) {
+    let notesdata = [];
+    let allnotes = localStorage.getItem("allnotes");
+    if (allnotes == null) {
+        let notesdata = [];
+    }
+    else {
+        notesdata = JSON.parse(allnotes);
+    }
+    if (notesdata[index].star) {
+        notesdata[index].star = false
+    }
+    else {
+        notesdata[index].star = true
+    }
+    localStorage.setItem("allnotes", JSON.stringify(notesdata))
+    display();
+    console.log(11111);
+}
+
+search.addEventListener("input", () => {
+    let notesdata = [];
+    let allnotes = localStorage.getItem("allnotes");
+    if (allnotes == null) {
+        let notesdata = [];
+    }
+    else {
+        notesdata = JSON.parse(allnotes);
+    }
+    if (notesdata.length == 0) {
+        notes_s4.innerHTML = `<div id="notfound">Not Found !</div>`
+    }
+    else {
+        notes_s5.innerHTML = ``
+        for(let i = 0; i< notesdata.length; i++){
+            if (notesdata[i].title.includes(search.value)) {
+                if (notesdata[i].star) {
+                    notes_s5.innerHTML += `<div class="note">
+                <div class="fav" id="fav" onclick="favnote(${index})">
+                        &starf;
+                </div>
+                <div class="note_title">
+                    ${notesdata[i].title}
+                </div>
+                <div class="note_desc">
+                    ${notesdata[i].desc}
+                </div>
+                <div class="drbtn">
+                    <button id="deletebtn" onclick="deletenote(${i})">Delete</button>
+                    <button id="readbtn" onclick="readnote(${i})">Read</button>
+                </div>
+            </div>`
+                }
+                else {
+                    notes_s5.innerHTML += `<div class="note">
+                    <div class="fav" id="fav" onclick="favnote(${i})">
+                    &star;
+                </div>
+                <div class="note_title">
+                    ${notesdata[i].title}
+                </div>
+                <div class="note_desc">
+                    ${notesdata[i].desc}
+                </div>
+                <div class="drbtn">
+                    <button id="deletebtn" onclick="deletenote(${i})">Delete</button>
+                    <button id="readbtn" onclick="readnote(${i})">Read</button>
+                </div>
+            </div>`
+                }
+            }
+            else {
+                notes_s5.innerHTML = "Not found";
+            }
+
+        }
+    }
+    section_one.style.display = "none"
+    section_two.style.display = "none"
+    section_three.style.display = "none"
+    section_four.style.display = "none"
+    section_five.style.display = "block"
+})
+</script>
+
+</html>

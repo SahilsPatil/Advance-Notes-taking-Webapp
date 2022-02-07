@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Notes</title>
+    <link rel="shortcut icon" href="logo3.png" type="image/x-icon">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <header1>
+        <div class="left" id="left">TNots</div>
+        <div class="middle" id="middle">
+            <ul>
+                <li id="homemenu">Home</li>
+                <li id="notemenu">Take Note</li>
+                <li id="aboutmenu">About</li>
+            </ul>
+        </div>
+        <div class="right">
+            <div class="searchbar" id="searchbar">
+                <input type="search" name="search" id="search" placeholder="Search Notes">
+                <!-- <button id="search_btn">Search</button> -->
+            </div>
+            <div class="menubtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" id="menubtn" fill="currentColor"
+                    class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                </svg>
+            </div>
+        </div>
+    </header1>
+
+
+
+
+
+
+    <div class="section_one" id="section_one">
+        <div class="title">
+            Take a Note
+        </div>
+        <form action="" id="form">
+            <input type="text" id="subject" maxlength="50" minlength="1" placeholder="Enter The Subject" required>
+            <p id="error1">Please Enter The Subject !! </p>
+            <textarea name="note" id="note" cols="60" rows="10" placeholder="Type Note..." maxlength="4000"
+                required></textarea>
+            <input type="button" value="Next ➡" id="next">
+            <input type="submit" value="Submit" id="submit" name="submit">
+        </form>
+    </div>
+
+
+
+
+
+
+    <div class="section_two" id="section_two">
+        <div class="title">
+            All Notes
+        </div>
+        <div class="notes" id="notes">
+            <p>Delete all</p>
+            <div class="note">
+                <div class="fav" id="fav">
+                    &star;
+                </div>
+                <div class="note_title">
+                    How to Do
+                </div>
+                <div class="note_desc">
+                    Lorem na lorem40
+                </div>
+                <div class="drbtn">
+                    <button id="deletebtn" onclick="deletenote(${index})">Delete</button>
+                    <button id="readbtn" onclick="readnote(${index})">Read</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="section_three" id="section_three">
+        <div class="title">
+            Read Notes
+        </div>
+        <div class="note_s3" id="note_s3">
+
+        </div>
+    </div>
+
+
+
+
+
+    <div class="section_four" id="section_four">
+        <div class="title">
+            Fav Notes
+        </div>
+        <div class="notes" id="notes_s4">
+            <div class="note">
+                <div class="fav" id="fav">
+                    &star;
+                </div>
+                <div class="note_title">
+                    <!-- How to Do -->
+                </div>
+                <div class="note_desc">
+                    <!-- Lorem na lorem40 -->
+                </div>
+                <div class="drbtn">
+                    <button id="deletebtn" onclick="deletenote(${index})">Delete</button>
+                    <button id="readbtn" onclick="readnote(${index})">Read</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="section_five" id="section_five">
+        <div class="title">
+            Search Notes
+        </div>
+        <div class="notes" id="notes_s5">
+            <div class="note">
+                <div class="fav" id="fav">
+                    &star;
+                </div>
+                <div class="note_title">
+                    <!-- How to Do -->
+                </div>
+                <div class="note_desc">
+                    <!-- Lorem na lorem40 -->
+                </div>
+                <div class="drbtn">
+                    <button id="deletebtn" onclick="deletenote(${index})">Delete</button>
+                    <button id="readbtn" onclick="readnote(${index})">Read</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="home" id="home">
+        <div class="info">
+            <div class="headupline">Take A Notes WebApp</div>
+            <h2>Add Notes with Advance Features.</h2>
+            <button id="takenote" class="takenote">Take a Note</button>
+        </div>
+    </div>
+
+
+
+
+
+    <footer>
+        <div class="footerbtn">
+            <button id="addbtn"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+                    class="bi bi-file-earmark-plus-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM8.5 7v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 1 0z" />
+                </svg>
+            </button>
+            <button id="allbtn"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+                    class="bi bi-journal" viewBox="0 0 16 16">
+                    <path
+                        d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                    <path
+                        d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
+                </svg>
+            </button>
+            <Button id="starbtn"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+                    class="bi bi-bookmark-star-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.178.178 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.178.178 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.178.178 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.178.178 0 0 1-.134-.098L8.16 4.1z" />
+                </svg>
+            </Button>
+        </div>
+    </footer>
+</body>
+<script src="index.js"></script>
+
+</html>
