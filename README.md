@@ -1,8 +1,7 @@
 # Advance-Notes-Taking-Web-App
-## Live Preview : [Click Here](https://anonymous-school.github.io/Advance-Notes-Taking-Web-App/)
+## Live Preview : [Click Here](https://sahilspatil.github.io/Advance-Notes-taking-Webapp/)
 
-
-![Design preview for the Shortly URL shortening API coding challenge](/img-1.png)
+![Design preview for the Shortly URL shortening API coding challenge](./image.png)
 
 ## Welcome! 👋
   This is advance notes taking web app with new features. It takes your notes with subject &amp; description &amp; 
